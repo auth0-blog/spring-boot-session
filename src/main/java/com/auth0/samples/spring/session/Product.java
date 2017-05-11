@@ -2,10 +2,11 @@ package com.auth0.samples.spring.session;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
-public class Product {
+public class Product implements Serializable {
     private String description;
     private BigDecimal price;
 

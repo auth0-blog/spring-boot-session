@@ -27,15 +27,31 @@ docker logs spring-session
 ## NGINX commands
 
 ```bash
-# create dockerized app image
+# create dockerized nginx image
 docker build -t spring-session-nginx ./nginx/
 
-# run dockerized app
+# run dockerized nginx
 docker run -p 8080:80 -d --name spring-session-nginx spring-session-nginx
 
 # stop and remove docker instance
 docker rm -f spring-session-nginx
 
-# getting application logs
+# getting nginx logs
 docker logs spring-session-nginx
+```
+
+## Redis commands
+
+```bash
+# create dockerized redis image
+docker build -t spring-session-redis redis
+
+# run dockerized redis
+docker run -p 6379:6379 -d --name spring-session-redis spring-session-redis
+
+# stop and remove docker instance
+docker rm -f spring-session-redis
+
+# getting nginx logs
+docker logs spring-session-redis
 ```
