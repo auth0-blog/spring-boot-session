@@ -14,15 +14,21 @@
  * limitations under the License.
  */
 
-package com.auth0.samples.spring.session.view;
+package com.auth0.samples.spring.session;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.primefaces.event.ReorderEvent;
 
 @Setter
 @Getter
@@ -32,5 +38,19 @@ public class HomeBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String text = "Hi, my name is Bruno";
+	private List<Product> products = new ArrayList<>();
+
+	public HomeBean() {
+		products.add(new Product("Milk", BigDecimal.valueOf(1)));
+		products.add(new Product("Cheese", BigDecimal.valueOf(1.2)));
+		products.add(new Product("Bread", BigDecimal.valueOf(1.1)));
+		products.add(new Product("Pasta", BigDecimal.valueOf(2)));
+		products.add(new Product("Gruyere", BigDecimal.valueOf(5)));
+	}
+
+	public void onRowReorder(ReorderEvent event) {
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Row Moved",
+				"From: " + event.getFromIndex() + ", To:" + event.getToIndex());
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
 }

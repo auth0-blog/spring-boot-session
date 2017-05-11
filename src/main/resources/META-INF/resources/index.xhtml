@@ -12,13 +12,23 @@
     </h:head>
 
     <h:body>
-        <p:layout fullPage="true" >
-            <p:layoutUnit position="center" >
-                <h:form id="contentForm">
-                    <h1>#{homeBean.text}</h1>
-                </h:form>
-            </p:layoutUnit>
-        </p:layout>
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
+            <p:dataTable var="product" value="#{homeBean.products}" draggableRows="true">
+                <p:ajax event="rowReorder" listener="#{homeBean.onRowReorder}" update=":form:msgs" />
+                <f:facet name="header">
+                    Draggable Rows
+                </f:facet>
+
+                <p:column headerText="Description">
+                    <h:outputText value="#{product.description}" />
+                </p:column>
+
+                <p:column headerText="Price">
+                    <h:outputText value="#{product.price}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
     </h:body>
 </f:view>
 </html>
