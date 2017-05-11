@@ -13,6 +13,7 @@
 
     <h:body>
         <h:form id="form">
+            <h1>Page loaded from: #{homeBean.applicationTitle}</h1>
             <p:growl id="msgs" showDetail="true" />
             <p:dataTable var="product" value="#{homeBean.products}" draggableRows="true">
                 <p:ajax event="rowReorder" listener="#{homeBean.onRowReorder}" update=":form:msgs" />
