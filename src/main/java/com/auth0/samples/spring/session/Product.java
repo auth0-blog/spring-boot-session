@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 public class Product implements Serializable {
     private String description;
     private BigDecimal price;
+    private int oi = 1;
 
     public Product(String description, BigDecimal price) {
         this.description = description;
