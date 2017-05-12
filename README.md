@@ -28,7 +28,7 @@ docker logs spring-session
 
 ```bash
 # create dockerized app image
-docker build -t spring-session-nginx ./nginx/
+docker build -t spring-session-nginx nginx
 
 # run dockerized app
 docker run -p 8080:80 -d --name spring-session-nginx spring-session-nginx
